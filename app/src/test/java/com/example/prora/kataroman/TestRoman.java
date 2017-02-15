@@ -12,29 +12,51 @@ import static org.junit.Assert.*;
 public class TestRoman {
 	@Test
 	public void test1(){
-		assertEquals("I", TranslateToRomanNumberUtils.translate(1));
+		assertEquals("I", TranslateToRomanNumeralUtils.translate(1));
 	}
 
 	@Test
 	public void testUnitNumber(){
-		assertEquals("I", TranslateToRomanNumberUtils.translate(1));
-		assertEquals("II", TranslateToRomanNumberUtils.translate(2));
-		assertEquals("III", TranslateToRomanNumberUtils.translate(3));
-		assertEquals("IV", TranslateToRomanNumberUtils.translate(4));
-		assertEquals("V", TranslateToRomanNumberUtils.translate(5));
-		assertEquals("VI", TranslateToRomanNumberUtils.translate(6));
-		assertEquals("VII", TranslateToRomanNumberUtils.translate(7));
-		assertEquals("VIII", TranslateToRomanNumberUtils.translate(8));
-		assertEquals("IX", TranslateToRomanNumberUtils.translate(9));
+		assertEquals("I", TranslateToRomanNumeralUtils.translate(1));
+		assertEquals("II", TranslateToRomanNumeralUtils.translate(2));
+		assertEquals("III", TranslateToRomanNumeralUtils.translate(3));
+		assertEquals("IV", TranslateToRomanNumeralUtils.translate(4));
+		assertEquals("V", TranslateToRomanNumeralUtils.translate(5));
+		assertEquals("VI", TranslateToRomanNumeralUtils.translate(6));
+		assertEquals("VII", TranslateToRomanNumeralUtils.translate(7));
+		assertEquals("VIII", TranslateToRomanNumeralUtils.translate(8));
+		assertEquals("IX", TranslateToRomanNumeralUtils.translate(9));
 	}
 
 	@Test
 	public void testTenthNumber(){
-		assertEquals("XI", TranslateToRomanNumberUtils.translate(11));
-		assertEquals("LV", TranslateToRomanNumberUtils.translate(55));
-		assertEquals("LXXIX", TranslateToRomanNumberUtils.translate(79));
-		assertEquals("XXIII", TranslateToRomanNumberUtils.translate(23));
-		assertEquals("XCIX", TranslateToRomanNumberUtils.translate(99));
-		assertEquals("XLII", TranslateToRomanNumberUtils.translate(42));
+		assertEquals("XI", TranslateToRomanNumeralUtils.translate(11));
+		assertEquals("LV", TranslateToRomanNumeralUtils.translate(55));
+		assertEquals("LXXIX", TranslateToRomanNumeralUtils.translate(79));
+		assertEquals("XXIII", TranslateToRomanNumeralUtils.translate(23));
+		assertEquals("XCIX", TranslateToRomanNumeralUtils.translate(99));
+		assertEquals("XLII", TranslateToRomanNumeralUtils.translate(42));
+	}
+
+	@Test
+	public void testHundredsNumber(){
+		assertEquals("CXI", TranslateToRomanNumeralUtils.translate(111));
+		assertEquals("DCCXXXIX", TranslateToRomanNumeralUtils.translate(739));
+		assertEquals("CCX", TranslateToRomanNumeralUtils.translate(210));
+		assertEquals("CMLI", TranslateToRomanNumeralUtils.translate(951));
+		assertEquals("CXCIII", TranslateToRomanNumeralUtils.translate(193));
+		assertEquals("DXX", TranslateToRomanNumeralUtils.translate(520));
+	}
+
+	@Test
+	public void testThousandsNumber(){
+		assertEquals("MCXI", TranslateToRomanNumeralUtils.translate(1111));
+		assertEquals("MMM", TranslateToRomanNumeralUtils.translate(3000));
+		assertEquals("MMMDXC", TranslateToRomanNumeralUtils.translate(3590));
+		assertEquals("MMCLIX", TranslateToRomanNumeralUtils.translate(2159));
+		assertEquals("MMMCCXCIV", TranslateToRomanNumeralUtils.translate(3294));
+		assertEquals("MMDCCXVIII", TranslateToRomanNumeralUtils.translate(2718));
+		assertEquals("MMMCMXCIX", TranslateToRomanNumeralUtils.translate(3999));
+
 	}
 }
