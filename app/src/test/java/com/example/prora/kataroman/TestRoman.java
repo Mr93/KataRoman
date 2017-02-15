@@ -27,4 +27,14 @@ public class TestRoman {
 		assertEquals("VIII", TranslateToRomanNumberUtils.translate(8));
 		assertEquals("IX", TranslateToRomanNumberUtils.translate(9));
 	}
+
+	@Test
+	public void testTenthNumber(){
+		assertEquals("XI", TranslateToRomanNumberUtils.translate(11));
+		assertEquals("LV", TranslateToRomanNumberUtils.translate(55));
+		assertEquals("LXXIX", TranslateToRomanNumberUtils.translate(79));
+		assertEquals("XXIII", TranslateToRomanNumberUtils.translate(23));
+		assertEquals("XCIX", TranslateToRomanNumberUtils.translate(99));
+		assertEquals("XLII", TranslateToRomanNumberUtils.translate(42));
+	}
 }

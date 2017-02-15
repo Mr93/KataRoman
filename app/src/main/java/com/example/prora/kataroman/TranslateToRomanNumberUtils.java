@@ -24,37 +24,47 @@ public class TranslateToRomanNumberUtils {
 	public static String translate(int number) {
 		initListData();
 		String result = "";
-		if (number < listDefaultRomanNumber.get(2).realValue) {
-			int tempCount;
-			if (number <= listDefaultRomanNumber.get(0).realValue * listDefaultRomanNumber.get(0).repeatTime) {
-				tempCount = number/listDefaultRomanNumber.get(0).realValue;
-				for (int i = 0; i < tempCount; i++) {
-					result += listDefaultRomanNumber.get(0).symbol;
-				}
-			}else if (number <= listDefaultRomanNumber.get(1).realValue){
-				tempCount = (listDefaultRomanNumber.get(1).realValue - number)/listDefaultRomanNumber.get(0).realValue;
-				for (int i = 0; i < tempCount; i++){
-					result += listDefaultRomanNumber.get(0).symbol;
-				}
-				result += listDefaultRomanNumber.get(1).symbol;
-			} else if (number <= (listDefaultRomanNumber.get(1).realValue +
-					listDefaultRomanNumber.get(0).realValue
-					* listDefaultRomanNumber.get(0).repeatTime)) {
-				result += listDefaultRomanNumber.get(1).symbol;
-				tempCount = (number - listDefaultRomanNumber.get(1).realValue)/listDefaultRomanNumber.get(0).realValue;
-				for(int i = 0; i < tempCount; i ++){
-					result += listDefaultRomanNumber.get(0).symbol;
-				}
-			}else {
-				tempCount = (listDefaultRomanNumber.get(2).realValue - number)/listDefaultRomanNumber.get(0).realValue;
-				for (int i = 0; i < tempCount; i++){
-					result += listDefaultRomanNumber.get(0).symbol;
-				}
-				result += listDefaultRomanNumber.get(2).symbol;
+		char[] stringNumberArray = String.valueOf(number).toCharArray();
+		for (int i = 0; i < stringNumberArray.length; i++) {
+			int zeroCount = stringNumberArray.length - i - 1;
+			int tempNumber = (int) (Integer.parseInt(String.valueOf(stringNumberArray[i]))*Math.pow(10, zeroCount));
+			result += convertNumber(tempNumber, zeroCount);
+		}
+		return result;
+	}
+
+	private static String convertNumber(int number, int zeroCount) {
+		RomanNumber minNumber = listDefaultRomanNumber.get(zeroCount * 2);
+		RomanNumber middleNumber = listDefaultRomanNumber.get(zeroCount * 2 + 1);
+		RomanNumber maxNumber = listDefaultRomanNumber.get(zeroCount * 2 + 2);
+		String result = "";
+		int tempCount;
+		if (number < maxNumber.realValue && number > 0) {
+			if (number <= minNumber.realValue * minNumber.repeatTime) {
+				tempCount = number / minNumber.realValue;
+				result = addSymbol(result, minNumber, tempCount);
+			} else if (number <= middleNumber.realValue) {
+				tempCount = (middleNumber.realValue - number) / minNumber.realValue;
+				result = addSymbol(result, minNumber, tempCount);
+				result += middleNumber.symbol;
+			} else if (number <= (middleNumber.realValue + minNumber.realValue * minNumber.repeatTime)) {
+				result += middleNumber.symbol;
+				tempCount = (number - middleNumber.realValue) / minNumber.realValue;
+				result = addSymbol(result, minNumber, tempCount);
+			} else {
+				tempCount = (maxNumber.realValue - number) / minNumber.realValue;
+				result = addSymbol(result, minNumber, tempCount);
+				result += maxNumber.symbol;
 			}
 		}
 		return result;
 	}
 
+	private static String addSymbol(String result, RomanNumber minNumber, int tempCount) {
+		for (int i = 0; i < tempCount; i++) {
+			result += minNumber.symbol;
+		}
+		return result;
+	}
 
 }
