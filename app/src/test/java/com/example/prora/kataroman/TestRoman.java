@@ -14,4 +14,17 @@ public class TestRoman {
 	public void test1(){
 		assertEquals("I", TranslateToRomanNumberUtils.translate(1));
 	}
+
+	@Test
+	public void testUnitNumber(){
+		assertEquals("I", TranslateToRomanNumberUtils.translate(1));
+		assertEquals("II", TranslateToRomanNumberUtils.translate(2));
+		assertEquals("III", TranslateToRomanNumberUtils.translate(3));
+		assertEquals("IV", TranslateToRomanNumberUtils.translate(4));
+		assertEquals("V", TranslateToRomanNumberUtils.translate(5));
+		assertEquals("VI", TranslateToRomanNumberUtils.translate(6));
+		assertEquals("VII", TranslateToRomanNumberUtils.translate(7));
+		assertEquals("VIII", TranslateToRomanNumberUtils.translate(8));
+		assertEquals("IX", TranslateToRomanNumberUtils.translate(9));
+	}
 }
